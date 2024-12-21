@@ -35,7 +35,7 @@ export const projects: Project[] = [
 			"A modern portfolio website built to showcase my projects and skills. Features a responsive design, dark mode support, and interactive project cards with detailed information about each project.",
 		technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
 		imageUrl: "./images/projects/nextjs-logo.svg",
-		projectUrl: "", // Add your portfolio URL here
-		githubUrl: "", // Add your portfolio's GitHub URL here
+		projectUrl: "https://mrclusterman.github.io/gabriel-miralles/",
+		githubUrl: "https://github.com/Mrclusterman/gabriel-miralles",
 	},
 ];
