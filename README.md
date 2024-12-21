@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gabriel Miralles - Full-Stack Developer Portfolio
 
-## Getting Started
+This is the source code for my personal portfolio, a Full-Stack Developer with a knack for crafting functional and visually appealing web applications.
 
-First, run the development server:
+![Preview](./imagen.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **Framework:** [Next.js](https://nextjs.org) (built with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app))
+-   **Styling:** Custom CSS for a sleek and professional design.
+-   **Fonts:** Optimized with [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) using the [Geist](https://vercel.com/font) font family.
+-   **Deployment:** Hosted seamlessly on the [Vercel](https://vercel.com) platform.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   **Homepage:** A clean and engaging introduction with a brief overview of skills and experience.
+-   **Projects Section:** Showcases key projects and accomplishments.
+-   **Experience Section:** Highlights professional roles and career achievements.
+-   **Dark Mode:** Modern and elegant design with a dark theme.
 
-## Learn More
+## 🛠️ Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository.
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+     Start the development server:
 
-## Deploy on Vercel
+     npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+     Open http://localhost:3000 in your browser to view the page.
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🌟 Additional Resources
+
+To learn more about developing with Next.js, check out these resources:
+
+    Next.js Documentation
+    Interactive Next.js Tutorial
+    Next.js GitHub Repository
+
+🌐 Deployment on Vercel
+
+This project is deployed effortlessly using the Vercel Platform. For more details, refer to the deployment documentation.
+📩 Contact
+
+Have questions or want to collaborate? Feel free to contact me through my website!
+
+Let me know if you’d like further customizations or additional sections added. 😊
