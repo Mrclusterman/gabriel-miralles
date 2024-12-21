@@ -6,7 +6,7 @@ export default function AboutSection() {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 				<div className="relative h-[400px] w-full">
 					<Image
-						src="/images/about-me.jpg"
+						src=".${prefix}/images/about-me.jpg"
 						alt="About Me"
 						fill
 						className="rounded-lg object-cover"

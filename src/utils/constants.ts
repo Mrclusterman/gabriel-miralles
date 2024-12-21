@@ -10,3 +10,4 @@ export const NAV_LINKS = [
 	{ href: "/projects", label: "Projects" },
 	{ href: "/experience", label: "Experience" },
 ];
+export const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
