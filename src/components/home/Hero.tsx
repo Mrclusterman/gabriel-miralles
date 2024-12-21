@@ -30,7 +30,7 @@ export default function Hero() {
 							</Button>
 						</Link>
 						<a
-							href="${prefix}/Gabriel_Miralles_FullStack_Developer.pdf"
+							href="./Gabriel_Miralles_FullStack_Developer.pdf"
 							download
 						>
 							<Button variant="outline" size="lg">
@@ -42,7 +42,7 @@ export default function Hero() {
 				<div className="flex-1 relative">
 					<div className="w-64 h-64 md:w-80 md:h-80 relative mx-auto">
 						<Image
-							src="${prefix}/images/profile.jpg"
+							src="./images/profile.jpg"
 							alt="Gabriel Miralles"
 							fill
 							className="rounded-full object-cover"
