@@ -4,9 +4,7 @@ import Hero from "@/components/site/Hero";
 import Work from "@/components/site/Work";
 import Lineup from "@/components/site/Lineup";
 import About from "@/components/site/About";
-import Contact from "@/components/site/Contact";
 import Footer from "@/components/site/Footer";
-import { HomeView, Places } from "@/components/site/Pictures";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/utils/constants";
 
 // Entrada de cada sección al aparecer en pantalla (las partes se escalonan en CSS)
@@ -46,11 +44,8 @@ export default function Home() {
 			<Hero />
 			<main>
 				<Work tech={tech} />
-				<HomeView />
 				<Lineup tech={tech} onTech={setTech} />
 				<About />
-				<Places />
-				<Contact />
 			</main>
 			<Footer />
 		</>

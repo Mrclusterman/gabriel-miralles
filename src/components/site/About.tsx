@@ -1,8 +1,11 @@
-// Texto a dos columnas con los datos que busca quien escanea resaltados en colores de la paleta
+import Image from "next/image";
+
+// Foto y texto con los datos que busca quien escanea resaltados en colores de la paleta
 export default function About() {
 	return (
 		<section className="about" id="about" data-reveal>
 			<h2 className="about-title">About me</h2>
+			<Image className="about-photo" src="./images/about-me.jpg" alt="Gabriel Miralles" width={1600} height={1067} />
 			<div className="about-text">
 				<p>
 					<strong>I&apos;m Gabriel</strong>, a full stack developer from <mark className="hl-1">Alicante, Spain</mark>.
