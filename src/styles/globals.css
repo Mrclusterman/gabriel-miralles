@@ -259,7 +259,7 @@ a {
 }
 .ledger-preview img {
 	width: 100%;
-	aspect-ratio: 4 / 5;
+	aspect-ratio: 4 / 3;
 	object-fit: cover;
 	object-position: top;
 }
@@ -484,7 +484,7 @@ a {
 	width: 100%;
 }
 .places-main img {
-	aspect-ratio: 4 / 5;
+	aspect-ratio: 4 / 3;
 	object-fit: cover;
 }
 .places-side img {
