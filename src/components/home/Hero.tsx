@@ -30,7 +30,7 @@ export default function Hero() {
 							</Button>
 						</Link>
 						<a
-							href="./Gabriel_Miralles_FullStack_Developer.pdf"
+							href="./CV_Gabriel_Miralles.pdf"
 							download
 						>
 							<Button variant="outline" size="lg">
