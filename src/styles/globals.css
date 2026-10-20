@@ -214,7 +214,8 @@ a {
 	max-height: 72svh;
 	aspect-ratio: 4 / 5;
 	object-fit: cover;
-	object-position: 50% 30%;
+	object-position: 50% 40%;
+	background: var(--surface);
 }
 .hero-foot p {
 	color: var(--hero-text);

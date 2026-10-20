@@ -1,7 +1,13 @@
-import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { buttonClasses } from "@/components/ui/Button";
 
 export default function Hero() {
+	const video = useRef<HTMLVideoElement>(null);
+	// Quien pide menos movimiento ve la imagen fija
+	useEffect(() => {
+		if (matchMedia("(prefers-reduced-motion: reduce)").matches) video.current?.pause();
+	}, []);
+
 	return (
 		<header className="hero" id="top">
 			<nav className="hero-nav" aria-label="Main">
@@ -21,13 +27,18 @@ export default function Hero() {
 				<span className="line"><span data-line style={{ "--i": 1 } as React.CSSProperties}>Miralles</span></span>
 			</h1>
 
-			<Image
+			<video
+				ref={video}
 				className="hero-photo"
-				src="./images/bike.jpg"
-				alt="Gabriel Miralles riding a green road bike up a hill, with the sea behind"
-				width={840}
-				height={1050}
-				priority
+				src="./images/bike.mp4"
+				poster="./images/bike-poster.jpg"
+				width={600}
+				height={800}
+				autoPlay
+				muted
+				loop
+				playsInline
+				aria-label="Gabriel Miralles riding a green road bike up a hill towards the camera, with the sea behind"
 			/>
 
 			<div className="hero-foot">
