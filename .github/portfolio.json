@@ -1,0 +1,8 @@
+{
+  "title": "This portfolio",
+  "kind": "Personal site",
+  "year": "2024–2026",
+  "description": "The site you are reading: Next.js and React, exported as static pages and deployed to GitHub Pages with GitHub Actions. Its project list builds itself from my public GitHub repositories.",
+  "technologies": ["Next.js", "React", "TypeScript"],
+  "imageAlt": "the first screen of this site"
+}

@@ -1,13 +1,7 @@
 import { experiences } from "@/data/experience";
 import { education } from "@/data/education";
-import { projects } from "@/data/projects";
 import { Fragment } from "react";
-import { Entry } from "@/types";
-
-// Tecnologías de toda la trayectoria y los proyectos, para el filtro
-const technologies = [
-	...new Set([...experiences, ...education, ...projects].flatMap((item) => item.technologies)),
-].sort((a, b) => a.localeCompare(b));
+import { Entry, Project } from "@/types";
 
 function Rows({ entries, tech }: { entries: Entry[]; tech: string | null }) {
 	return (
@@ -37,12 +31,19 @@ function Rows({ entries, tech }: { entries: Entry[]; tech: string | null }) {
 
 // La trayectoria como el calendario de un plan de entrenamiento: puesto, dónde, con qué y cuándo.
 export default function Lineup({
+	projects,
 	tech,
 	onTech,
 }: {
+	projects: Project[];
 	tech: string | null;
 	onTech: (tech: string | null) => void;
 }) {
+	// Tecnologías de toda la trayectoria y los proyectos, para el filtro
+	const technologies = [
+		...new Set([...experiences, ...education, ...projects].flatMap((item) => item.technologies)),
+	].sort((a, b) => a.localeCompare(b));
+
 	return (
 		<section className="lineup" id="experience" data-reveal>
 			<div className="lineup-filter">

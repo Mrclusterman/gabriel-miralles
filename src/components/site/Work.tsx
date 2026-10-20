@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { projects } from "@/data/projects";
+import { Project } from "@/types";
 
 // Libro mayor de proyectos: al pasar o enfocar una fila aparece su imagen a la derecha.
-export default function Work({ tech }: { tech: string | null }) {
+export default function Work({ projects, tech }: { projects: Project[]; tech: string | null }) {
 	return (
 		<section className="work" id="work" data-reveal>
 			<h2 className="work-title">Selected work</h2>
