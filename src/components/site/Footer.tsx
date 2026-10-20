@@ -2,7 +2,7 @@ import Image from "next/image";
 import { buttonClasses } from "@/components/ui/Button";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/utils/constants";
 
-// Cierre: invitación, contacto y CV en un solo campo invertido; el apellido, entero de ancho, lo recorta el borde inferior
+// Cierre: invitación, contacto y CV en un solo campo
 export default function Footer() {
 	return (
 		<footer className="footer" id="contact">
@@ -24,7 +24,6 @@ export default function Footer() {
 				<p>Alicante, Spain</p>
 				<p>© 2026 Gabriel Miralles</p>
 			</div>
-			<p className="footer-wordmark" aria-hidden="true">Miralles</p>
 		</footer>
 	);
 }

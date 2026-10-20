@@ -10,11 +10,21 @@
 	--accent-ink: #ffffff;
 	--accent-deep: color-mix(in srgb, var(--accent) 70%, var(--ink)); /* acento legible a tamaño de texto */
 
+	/* Campos de color por papel: portada y cierre */
+	--hero-bg: var(--accent);
+	--hero-name: var(--bg);
+	--hero-name-2: var(--ink);
+	--hero-text: #ffffff;
+	--close-bg: var(--ink);
+	--close-ink: var(--bg);
+	--close-muted: #a8a39b;
+
+	/* Escala contenida: en escritorio nada pasa de 9rem (antes 14rem) */
 	--step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
-	--step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-	--step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
-	--step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
-	--step-display: clamp(5.5rem, 15vw, 14.375rem);
+	--step-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+	--step-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+	--step-head: clamp(1.875rem, 1.4rem + 2vw, 3rem);
+	--step-display: clamp(4.5rem, 10vw, 9rem);
 
 	--margin: clamp(1rem, 2.6vw, 2.5rem);
 	--gutter: clamp(1rem, 2vw, 2rem);
@@ -25,6 +35,35 @@
 	--t-press: 140ms;
 	--t-hover: 180ms;
 	--t-reveal: 800ms;
+}
+
+/* Variante "oscura": la misma idea sobre fondo carbón, acento verde azulado más claro para que se lea */
+[data-palette="oscura"] {
+	--bg: #16191b;
+	--surface: #1e2225;
+	--ink: #ece8e1;
+	--muted: #a29d94;
+	--accent: #5aa9ba;
+	--accent-ink: #0d1012;
+	--accent-deep: #7cc0cf;
+	--hero-bg: #1f4b56;
+	--hero-name: #ece8e1;
+	--hero-name-2: #8fd0de;
+	--hero-text: #ffffff;
+	--close-bg: #0d0f10;
+	--close-ink: #ece8e1;
+	--close-muted: #8f8a82;
+}
+/* Variante "uniforme": todas las secciones con el mismo fondo y la misma tinta; el acento solo en acciones y resaltados */
+[data-palette="uniforme"] {
+	--surface: var(--bg);
+	--hero-bg: var(--bg);
+	--hero-name: var(--ink);
+	--hero-name-2: var(--accent-deep);
+	--hero-text: var(--ink);
+	--close-bg: var(--bg);
+	--close-ink: var(--ink);
+	--close-muted: var(--muted);
 }
 
 /* ---------- reset ---------- */
@@ -133,14 +172,14 @@ a {
 	color: var(--bg);
 }
 .button-solid:hover {
-	background: #2b2b2b;
+	background: color-mix(in srgb, var(--ink) 82%, var(--bg));
 }
 .button-inverse {
-	background: var(--bg);
-	color: var(--ink);
+	background: var(--close-ink);
+	color: var(--close-bg);
 }
 .button-inverse:hover {
-	background: #ffffff;
+	background: color-mix(in srgb, var(--close-ink) 82%, var(--close-bg));
 }
 
 /* ---------- portada: el nombre en dos líneas y dos tintas sobre un campo de color ---------- */
@@ -149,11 +188,11 @@ a {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	padding: 1.5rem var(--margin) 2.5rem;
-	background: var(--accent);
-	color: var(--bg);
+	background: var(--hero-bg);
+	color: var(--hero-name);
 }
 .hero-nav {
-	color: var(--accent-ink);
+	color: var(--hero-text);
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
@@ -177,13 +216,13 @@ a {
 }
 .hero-name {
 	align-self: start;
-	margin-top: 12vh;
+	margin-top: 10vh;
 	font-size: var(--step-display);
 	line-height: 0.82;
 	letter-spacing: -0.04em;
 }
 .hero-name .line:last-child {
-	color: var(--ink);
+	color: var(--hero-name-2);
 }
 .hero-foot {
 	display: flex;
@@ -193,7 +232,7 @@ a {
 	text-align: right;
 }
 .hero-foot p {
-	color: var(--accent-ink);
+	color: var(--hero-text);
 	max-width: 22ch;
 	font-size: var(--step-lead);
 	font-weight: 600;
@@ -319,14 +358,14 @@ a {
 .chip {
 	min-height: 2.75rem;
 	padding: 0 1rem;
-	background: var(--bg);
+	background: color-mix(in srgb, var(--ink) 7%, var(--bg));
 	font-size: var(--step-small);
 	font-weight: 600;
 	transition: background-color var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out),
 		transform var(--t-press) var(--ease-out);
 }
 .chip:hover {
-	background: #ffffff;
+	background: color-mix(in srgb, var(--ink) 14%, var(--bg));
 }
 .chip:active {
 	transform: scale(0.96);
@@ -439,15 +478,13 @@ a {
 	background: var(--ink);
 }
 
-/* ---------- cierre: invitación, contacto y CV sobre el apellido recortado ---------- */
+/* ---------- cierre: invitación, contacto y CV ---------- */
 .footer {
 	display: flex;
 	flex-direction: column;
 	padding: var(--section) var(--margin) 0;
-	background: var(--ink);
-	color: var(--bg);
-	overflow: hidden;
-	container-type: inline-size; /* para ajustar el apellido al ancho exacto del pie */
+	background: var(--close-bg);
+	color: var(--close-ink);
 }
 .footer-head {
 	display: flex;
@@ -457,10 +494,10 @@ a {
 	margin-bottom: 3rem;
 }
 .footer-invite {
-	font-size: clamp(3rem, 7vw, 7rem);
+	font-size: clamp(2.5rem, 5vw, 4.5rem);
 }
 .footer-face {
-	width: clamp(6rem, 12vw, 11rem);
+	width: clamp(5rem, 8vw, 7.5rem);
 	aspect-ratio: 1;
 	border-radius: 50%;
 	object-fit: cover;
@@ -468,8 +505,8 @@ a {
 }
 .footer-rows li {
 	padding: 0.35em 0;
-	font-size: clamp(1.75rem, 4vw, 3.5rem);
-	letter-spacing: -0.04em;
+	font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+	letter-spacing: -0.03em;
 	line-height: 1.1;
 }
 .footer-rows a:not(.button) {
@@ -491,19 +528,10 @@ a {
 	display: flex;
 	justify-content: space-between;
 	gap: 1rem;
-	margin-top: var(--section);
-	padding-bottom: 1.25rem;
+	margin-top: calc(var(--section) * 0.75);
+	padding-bottom: 2rem;
 	font-size: var(--step-small);
-	color: #a8a39b;
-}
-/* "Miralles" mide 3,72 em: llena el ancho entre márgenes sin cortarse por los lados; solo el borde inferior lo recorta */
-.footer-wordmark {
-	font-size: calc(100cqw / 3.72);
-	font-weight: 800;
-	letter-spacing: -0.05em;
-	line-height: 0.8;
-	white-space: nowrap;
-	margin-bottom: -0.17em;
+	color: var(--close-muted);
 }
 
 /* página de las rutas antiguas */
@@ -517,7 +545,7 @@ a {
 		grid-template-columns: 1fr;
 	}
 	.hero-name {
-		font-size: 20vw;
+		font-size: 14vw;
 	}
 	.about-photo {
 		grid-column: 1 / span 6;
