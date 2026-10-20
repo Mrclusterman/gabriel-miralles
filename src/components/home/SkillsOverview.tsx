@@ -2,22 +2,24 @@ import { Skill } from "@/types";
 import Card from "@/components/ui/Card";
 
 const skills: Skill[] = [
-	{ name: "React", level: 60, category: "frontend" },
-	{ name: "NextJS", level: 60, category: "frontend" },
-	{ name: "TypeScript", level: 75, category: "frontend" },
-	{ name: "Angular", level: 75, category: "frontend" },
-	{ name: "Node.js", level: 80, category: "backend" },
-	{ name: "Spring Boot", level: 50, category: "backend" },
-	{ name: "MongoDB", level: 50, category: "backend" },
-	{ name: "MySQL", level: 70, category: "backend" },
-	{ name: "JavaScript", level: 60, category: "technologies" },
-	{ name: "Java", level: 25, category: "technologies" },
-	{ name: "C#", level: 25, category: "technologies" },
-	{ name: "Python", level: 20, category: "technologies" },
-	{ name: "Git", level: 70, category: "tools" },
-	{ name: "GitHub", level: 70, category: "tools" },
-	{ name: "Docker", level: 60, category: "tools" },
-	{ name: "Postman", level: 60, category: "tools" },
+	{ name: "React", category: "frontend" },
+	{ name: "Next.js", category: "frontend" },
+	{ name: "Angular", category: "frontend" },
+	{ name: "TypeScript", category: "frontend" },
+	{ name: "Tailwind CSS", category: "frontend" },
+	{ name: "Node.js", category: "backend" },
+	{ name: "Python (FastAPI)", category: "backend" },
+	{ name: "Spring Boot", category: "backend" },
+	{ name: "MongoDB", category: "backend" },
+	{ name: "MySQL", category: "backend" },
+	{ name: "JavaScript", category: "technologies" },
+	{ name: "Python", category: "technologies" },
+	{ name: "Java", category: "technologies" },
+	{ name: "C#", category: "technologies" },
+	{ name: "Git & GitHub", category: "tools" },
+	{ name: "Docker", category: "tools" },
+	{ name: "Linux", category: "tools" },
+	{ name: "Postman", category: "tools" },
 ];
 
 export default function SkillsOverview() {
@@ -80,24 +82,9 @@ export default function SkillsOverview() {
 										className="p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors duration-300"
 									>
 										<div className="flex flex-col">
-											<span className="text-lg font-medium mb-2">
+											<span className="text-lg font-medium">
 												{skill.name}
 											</span>
-											<div className="text-sm text-gray-600 dark:text-gray-400">
-												{skill.level >= 95
-													? "Master"
-													: skill.level >= 85
-													? "Expert"
-													: skill.level >= 75
-													? "Advanced"
-													: skill.level >= 60
-													? "Intermediate"
-													: skill.level >= 45
-													? "Proficient"
-													: skill.level >= 30
-													? "Beginner"
-													: "Novice"}
-											</div>
 										</div>
 									</div>
 								))}

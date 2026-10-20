@@ -4,8 +4,8 @@ export interface Project {
 	description: string;
 	technologies: string[];
 	imageUrl: string;
-	projectUrl: string;
-	githubUrl: string;
+	projectUrl?: string; // sin enlaces: proyecto privado
+	githubUrl?: string;
 }
 
 export interface Experience {
@@ -27,6 +27,5 @@ export interface Education {
 
 export interface Skill {
 	name: string;
-	level: number; // 0-100
 	category: "frontend" | "backend" | "tools" | "technologies";
 }

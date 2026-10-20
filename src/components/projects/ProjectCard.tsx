@@ -26,6 +26,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 					))}
 				</div>
 				<div className="flex justify-end space-x-4">
+					{project.githubUrl && (
 					<a
 						href={project.githubUrl}
 						target="_blank"
@@ -34,6 +35,8 @@ export default function ProjectCard({ project }: { project: Project }) {
 					>
 						<Github className="h-6 w-6" />
 					</a>
+					)}
+					{project.projectUrl && (
 					<a
 						href={project.projectUrl}
 						target="_blank"
@@ -42,6 +45,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 					>
 						<ExternalLink className="h-6 w-6" />
 					</a>
+					)}
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,7 @@ export const experiences: Experience[] = [
 		id: "1",
 		company: "Independent Teaching",
 		position: "Programming Instructor",
-		period: "September 2024 - Present",
+		period: "September 2024 - June 2025",
 		description: [
 			"Conduct comprehensive review classes in Java, C#, and MySQL, helping students strengthen their programming fundamentals.",
 			"Design and deliver customized learning materials to address specific student needs and knowledge gaps.",
@@ -18,25 +18,6 @@ export const experiences: Experience[] = [
 			".NET",
 			"Object-Oriented Programming",
 			"Database Design",
-		],
-	},
-	{
-		id: "2",
-		company: "Freelance - Personal Project",
-		position: "Full-Stack Developer",
-		period: "March 2024 - Present",
-		description: [
-			"Developed a web application from scratch to manage, store, and share photography projects, combining functionality with an attractive design.",
-			"Implemented modern technologies such as NodeJS, React, and NextJS to create a scalable, optimized, and high-performance solution.",
-			"Designed and implemented customized features for uploading, viewing, and organizing photos, with a focus on user experience and efficiency.",
-		],
-		technologies: [
-			"NextJS",
-			"React",
-			"TypeScript",
-			"MySQL",
-			"GitHub",
-			"Git",
 		],
 	},
 	{
@@ -74,6 +55,6 @@ export const experiences: Experience[] = [
 			"Improved interface performance using Angular, JavaScript, and TypeScript",
 			"Conducted testing with Postman and managed version control with GitHub in a collaborative environment.",
 		],
-		technologies: ["Angular", "Angular Material", "Typescript", "MySQL"],
+		technologies: ["Angular", "Angular Material", "TypeScript", "Postman"],
 	},
 ];

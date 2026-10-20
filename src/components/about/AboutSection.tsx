@@ -42,7 +42,7 @@ export default function AboutSection() {
 						<p>
 							Specialized in agile work environments{" "}
 							<span className="text-black dark:text-gray-100">
-								(Scrum)
+								(Kanban)
 							</span>
 							, focusing on collaboration and implementing new
 							features to enhance user experience.

@@ -1,6 +1,8 @@
 // src/components/projects/ProjectFilters.tsx
-import { useState, useEffect } from "react";
 import { projects } from "@/data/projects";
+
+// Datos estáticos: la lista se calcula una vez, sin estado ni efecto
+const technologies = [...new Set(projects.flatMap((project) => project.technologies))].sort();
 
 interface ProjectFiltersProps {
 	selected: string[];
@@ -11,17 +13,6 @@ export default function ProjectFilters({
 	selected,
 	onChange,
 }: ProjectFiltersProps) {
-	// Get unique technologies from all projects
-	const [technologies, setTechnologies] = useState<string[]>([]);
-
-	useEffect(() => {
-		const techSet = new Set<string>();
-		projects.forEach((project) => {
-			project.technologies.forEach((tech) => techSet.add(tech));
-		});
-		setTechnologies(Array.from(techSet).sort());
-	}, []);
-
 	const toggleTechnology = (tech: string) => {
 		if (selected.includes(tech)) {
 			onChange(selected.filter((t) => t !== tech));

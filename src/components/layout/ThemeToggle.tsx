@@ -1,15 +1,11 @@
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export default function ThemeToggle() {
-	const [mounted, setMounted] = useState(false);
+	// false al prerenderizar y true en el navegador: evita el desajuste de hidratación sin setState en un efecto
+	const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 	const { theme, setTheme, systemTheme } = useTheme();
-
-	// Prevent hydration mismatch
-	useEffect(() => {
-		setMounted(true);
-	}, []);
 
 	// Get the current theme, accounting for system theme
 	const currentTheme = theme === "system" ? systemTheme : theme;
