@@ -1,25 +1,5 @@
-const baseStyles =
-	"inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
-
-const variants = {
-	primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-	secondary:
-		"bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500 dark:bg-gray-700 dark:text-white",
-	outline:
-		"border-2 border-blue-600 text-blue-600 hover:bg-blue-50 focus:ring-blue-500 dark:hover:bg-gray-800",
-};
-
-const sizes = {
-	sm: "px-3 py-1.5 text-sm",
-	md: "px-4 py-2",
-	lg: "px-6 py-3 text-lg",
-};
-
-// Para enlaces con aspecto de botón (un <button> dentro de un <a> no es accesible)
-export function buttonClasses(
-	variant: keyof typeof variants = "primary",
-	size: keyof typeof sizes = "md",
-	className = ""
-) {
-	return `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+// Enlaces con aspecto de botón (un <button> dentro de un <a> no es accesible).
+// Un solo estilo de botón en toda la página: relleno plano y esquinas rectas.
+export function buttonClasses(variant: "solid" | "inverse" = "solid") {
+	return `button button-${variant}`;
 }

@@ -1,24 +1,772 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Dirección "Type and nothing else" (tasteskill, semilla 1563293122): Schibsted Grotesk, paleta Putty and black */
 
-@layer base {
-	body {
-		@apply text-gray-900 dark:text-white;
-	}
+/* ---------- tokens ---------- */
+:root {
+	--bg: #dedad3;
+	--surface: #d3cec6;
+	--ink: #0a0a0a;
+	--muted: #5c5852;
+	--accent: #256f82;
+	--accent-ink: #ffffff;
+	--accent-deep: color-mix(in srgb, var(--accent) 70%, var(--ink)); /* acento legible a tamaño de texto */
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply font-bold;
+	--step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+	--step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+	--step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+	--step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+	--step-display: clamp(5.5rem, 15vw, 14.375rem);
+
+	--margin: clamp(1rem, 2.6vw, 2.5rem);
+	--gutter: clamp(1rem, 2vw, 2rem);
+	--section: clamp(5rem, 11vw, 10rem);
+
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--t-press: 140ms;
+	--t-hover: 180ms;
+	--t-reveal: 800ms;
+}
+
+/* ---------- reset ---------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+}
+.site {
+	font-size: var(--step-body);
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: clip;
+}
+h1,
+h2,
+h3,
+p,
+figure,
+ul,
+table {
+	margin: 0;
+}
+h1,
+h2,
+h3 {
+	font-weight: 800;
+	text-wrap: balance;
+	letter-spacing: -0.05em;
+	line-height: 0.88;
+}
+ul {
+	padding: 0;
+	list-style: none;
+}
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	background: var(--surface);
+}
+button {
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+}
+a {
+	color: inherit;
+	text-underline-offset: 0.18em;
+	text-decoration-thickness: 0.07em;
+}
+:target {
+	scroll-margin-top: 1rem;
+}
+::selection {
+	background: var(--accent);
+	color: var(--accent-ink);
+}
+:focus-visible {
+	outline: 3px solid var(--ink);
+	outline-offset: 3px;
+}
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
 	}
 }
 
-@layer components {
-	.container-padding {
-		@apply px-4 sm:px-6 lg:px-8;
+/* ---------- botón: uno solo en toda la página, plano y de esquinas rectas ---------- */
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3rem;
+	padding: 0 1.5rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) var(--ease-out);
+}
+.button:active {
+	transform: scale(0.97);
+}
+.button-solid {
+	background: var(--ink);
+	color: var(--bg);
+}
+.button-solid:hover {
+	background: #2b2b2b;
+}
+.button-inverse {
+	background: var(--bg);
+	color: var(--ink);
+}
+.button-inverse:hover {
+	background: #ffffff;
+}
+
+/* ---------- portada: el nombre en dos líneas y dos tintas sobre un campo de color ---------- */
+.hero {
+	min-height: 100svh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	padding: 1.5rem var(--margin) 2.5rem;
+	background: var(--accent);
+	color: var(--bg);
+}
+.hero-nav {
+	color: var(--accent-ink);
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	font-size: var(--step-small);
+	font-weight: 600;
+}
+.hero-nav ul {
+	display: flex;
+	gap: 1.5rem;
+}
+.hero-nav a {
+	text-decoration: none;
+	transition: opacity var(--t-hover) var(--ease-out);
+}
+.hero-nav a:hover {
+	opacity: 0.7;
+}
+.monogram {
+	font-weight: 800;
+	letter-spacing: -0.04em;
+}
+.hero-name {
+	align-self: start;
+	margin-top: 12vh;
+	font-size: var(--step-display);
+	line-height: 0.82;
+	letter-spacing: -0.04em;
+}
+.hero-name .line:last-child {
+	color: var(--ink);
+}
+.hero-foot {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 1.5rem;
+	text-align: right;
+}
+.hero-foot p {
+	color: var(--accent-ink);
+	max-width: 22ch;
+	font-size: var(--step-lead);
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+/* Titular enmascarado: cada línea sube desde detrás de su línea base */
+.lines .line {
+	display: block;
+	overflow: hidden;
+	padding-bottom: 0.08em;
+	margin-bottom: -0.08em;
+}
+.lines [data-line] {
+	display: block;
+}
+
+/* ---------- proyectos: libro mayor con vista previa al lado ---------- */
+.work {
+	padding: var(--section) var(--margin);
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	column-gap: var(--gutter);
+}
+.work-title {
+	grid-column: 1 / -1;
+	font-size: var(--step-head);
+	margin-bottom: 2.5rem;
+}
+.ledger {
+	grid-column: 1;
+	position: relative;
+}
+.ledger-row + .ledger-row {
+	margin-top: 2rem;
+}
+.ledger-line {
+	display: grid;
+	grid-template-columns: 1fr 1fr auto;
+	align-items: baseline;
+	gap: 1rem;
+	min-height: 2.75rem;
+	font-size: var(--step-lead);
+	font-weight: 600;
+	text-decoration: none;
+	transition: color var(--t-hover) var(--ease-out);
+}
+.ledger-kind {
+	font-size: var(--step-body);
+	font-weight: 400;
+}
+.ledger-year {
+	font-size: var(--step-body);
+	font-weight: 400;
+	font-variant-numeric: tabular-nums;
+}
+.ledger-desc {
+	max-width: 52ch;
+	margin-top: 0.5rem;
+}
+.ledger-preview {
+	margin-top: 1.25rem;
+}
+.ledger-preview img {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	object-position: top;
+}
+.ledger-row.is-dim .ledger-line,
+.ledger-row.is-dim .ledger-desc {
+	color: var(--muted);
+}
+@media (min-width: 64em) {
+	/* En escritorio la imagen ocupa la columna derecha: la del primer proyecto por defecto, la de la fila señalada al pasar */
+	.ledger-preview {
+		position: absolute;
+		top: 0;
+		left: calc(100% + var(--gutter) * 2);
+		width: calc(5 / 7 * 100% - var(--gutter));
+		margin: 0;
+		opacity: 0;
+		transition: opacity 150ms var(--ease-out);
+		pointer-events: none;
+	}
+	.ledger-row:first-child .ledger-preview,
+	.ledger-row:hover .ledger-preview,
+	.ledger-row:focus-within .ledger-preview {
+		opacity: 1;
+	}
+	.ledger:hover .ledger-row:not(:hover) .ledger-preview,
+	.ledger:focus-within .ledger-row:not(:focus-within) .ledger-preview {
+		opacity: 0;
+	}
+	.ledger:hover .ledger-row:not(:hover) .ledger-line,
+	.ledger:hover .ledger-row:not(:hover) .ledger-desc {
+		color: var(--muted);
+	}
+}
+
+/* ---------- banda a sangre con la Serra Gelada ---------- */
+.band {
+	padding-bottom: var(--section);
+}
+.band-frame {
+	overflow: clip;
+	height: min(80vh, 56vw);
+}
+.band-frame img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.band figcaption {
+	display: grid;
+	grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+	column-gap: var(--gutter);
+	padding: 1rem var(--margin) 0;
+}
+.band figcaption span:last-child {
+	align-self: end;
+	text-align: right;
+	font-size: var(--step-small);
+	color: var(--muted);
+}
+
+/* ---------- trayectoria: tabla a un solo tamaño, como el calendario de un plan ---------- */
+.lineup {
+	padding: var(--section) var(--margin);
+	background: var(--surface);
+	font-size: var(--step-lead);
+	line-height: 1.4;
+}
+.lineup-filter {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem 1.25rem;
+	font-size: var(--step-body);
+}
+.lineup-filter p {
+	font-weight: 600;
+}
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+.chip {
+	min-height: 2.75rem;
+	padding: 0 1rem;
+	background: var(--bg);
+	font-size: var(--step-small);
+	font-weight: 600;
+	transition: background-color var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out),
+		transform var(--t-press) var(--ease-out);
+}
+.chip:hover {
+	background: #ffffff;
+}
+.chip:active {
+	transform: scale(0.96);
+}
+.chip[aria-pressed="true"] {
+	background: var(--ink);
+	color: var(--bg);
+}
+.lineup-part {
+	margin: 4.5rem 0 1.25rem;
+	font-size: inherit;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	color: var(--accent-deep);
+}
+.lineup-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.lineup-table th,
+.lineup-table td {
+	padding: 0.15em 1rem 0.15em 0;
+	text-align: left;
+	font-weight: 400;
+	vertical-align: top;
+	transition: color var(--t-hover) var(--ease-out);
+}
+.lineup-table th {
+	width: 27%;
+}
+.lineup-table td:nth-child(2) {
+	width: 27%;
+}
+.lineup-table .lineup-stack {
+	width: 28%;
+}
+.lineup-table .lineup-period {
+	padding-right: 0;
+	text-align: right;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+.lineup-table tr.is-dim th,
+.lineup-table tr.is-dim td {
+	color: var(--muted);
+}
+.lineup-table tr.is-hit th {
+	color: var(--accent-deep);
+}
+
+/* ---------- about: texto grande a dos columnas con los datos resaltados ---------- */
+.about {
+	padding: var(--section) var(--margin);
+}
+.about-title {
+	font-size: var(--step-head);
+	margin-bottom: 2.5rem;
+}
+.about-text {
+	columns: 2;
+	column-gap: 2rem;
+	font-size: var(--step-lead);
+	line-height: 1.18;
+	hyphens: auto;
+}
+@media (min-width: 64em) {
+	.about-text {
+		text-align: justify;
+	}
+}
+.about-text p + p {
+	margin-top: 0.8em;
+}
+.about-text strong {
+	font-weight: 600;
+}
+.about-text mark {
+	color: inherit;
+	padding: 0 0.1em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+.hl-1 {
+	background: color-mix(in srgb, var(--accent) 22%, var(--bg));
+}
+.hl-2 {
+	background: color-mix(in srgb, var(--ink) 12%, var(--bg));
+}
+.hl-3 {
+	background: color-mix(in srgb, var(--accent) 40%, var(--bg));
+}
+.about-text .hl-strong {
+	background: var(--accent);
+	color: var(--accent-ink);
+}
+.about-cta {
+	text-decoration: none;
+}
+.about-cta:hover .hl-strong {
+	background: var(--ink);
+}
+
+/* ---------- lugares: la subida, yo y la playa ---------- */
+.places {
+	padding: 0 var(--margin) var(--section);
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	column-gap: var(--gutter);
+	row-gap: 2rem;
+}
+.places-title {
+	grid-column: 1 / -1;
+	font-size: var(--step-head);
+}
+.places-main {
+	grid-column: 1 / span 6;
+	grid-row: span 2;
+}
+.places-side {
+	grid-column: 7 / span 6;
+}
+.places img {
+	width: 100%;
+}
+.places-main img {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+.places-side img {
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+}
+.places figcaption {
+	margin-top: 0.75rem;
+	font-size: var(--step-small);
+	color: var(--muted);
+}
+
+/* ---------- contacto: filas a tamaño de titular ---------- */
+.contact {
+	padding-top: var(--section);
+	background: var(--surface);
+}
+.contact-title {
+	padding: 0 var(--margin) 2.5rem;
+	font-size: var(--step-head);
+}
+.contact-rows li {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+	min-height: clamp(5rem, 10vw, 9.5rem);
+	padding: 0 var(--margin) 0.35em;
+	font-size: clamp(2.5rem, 6vw, 5.5rem);
+	letter-spacing: -0.04em;
+	line-height: 1;
+}
+.contact-rows li:nth-child(odd) {
+	background: var(--bg);
+}
+.contact-rows li:first-child {
+	font-size: clamp(1.25rem, 4.6vw, var(--step-head));
+}
+.contact-rows a {
+	text-decoration: underline;
+	text-decoration-thickness: 0.05em;
+	text-decoration-color: transparent;
+	transition: text-decoration-color var(--t-hover) var(--ease-out);
+}
+.contact-rows a:hover,
+.contact-rows a:focus-visible {
+	text-decoration-color: currentColor;
+}
+.contact-face {
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	object-fit: cover;
+	flex: none;
+}
+.contact-rows .contact-hello {
+	justify-content: flex-start;
+	align-items: center;
+}
+.contact-rows .round-button {
+	display: inline-grid;
+	place-items: center;
+	width: 0.9em;
+	height: 0.9em;
+	border-radius: 50%;
+	background: var(--accent);
+	color: var(--accent-ink);
+	text-decoration: none;
+	transition: transform var(--t-hover) var(--ease-out);
+}
+.contact-rows .round-button svg {
+	width: 45%;
+	height: auto;
+}
+.contact-rows .round-button:hover {
+	transform: translateX(0.12em);
+}
+
+/* ---------- pie: invitación sobre el apellido recortado ---------- */
+.footer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: var(--section) var(--margin) 0;
+	background: var(--ink);
+	color: var(--bg);
+	overflow: hidden;
+}
+.footer-top {
+	margin-bottom: 4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 2rem;
+}
+.footer-invite {
+	font-size: var(--step-head);
+	margin-bottom: 2rem;
+}
+.footer-links {
+	display: grid;
+	gap: 0.5rem;
+	font-weight: 600;
+}
+.footer-links a {
+	text-decoration: none;
+	transition: opacity var(--t-hover) var(--ease-out);
+}
+.footer-links a:hover {
+	opacity: 0.7;
+}
+.footer-credits {
+	margin-top: auto;
+	padding-bottom: 1rem;
+	max-width: none;
+	font-size: var(--step-small);
+	color: #a8a39b;
+}
+.footer-wordmark {
+	font-size: 32vw;
+	font-weight: 800;
+	letter-spacing: -0.05em;
+	line-height: 0.8;
+	white-space: nowrap;
+	margin-bottom: -0.17em;
+	margin-left: -0.04em;
+}
+
+/* página de las rutas antiguas */
+.redirect {
+	padding: var(--margin);
+}
+
+@media (min-width: 64em) {
+	.footer {
+		min-height: 100svh;
+	}
+}
+
+/* ---------- tablet ---------- */
+@media (max-width: 63.99em) {
+	.work {
+		grid-template-columns: 1fr;
+	}
+	.hero-name {
+		font-size: 20vw;
+	}
+}
+
+/* ---------- teléfono ---------- */
+@media (max-width: 47.99em) {
+	.wide-only {
+		display: none;
+	}
+	.hero-name {
+		margin-top: 16vh;
+		font-size: 21vw;
+	}
+	.hero-foot {
+		align-items: flex-start;
+		text-align: left;
+	}
+	.work {
+		grid-template-columns: 1fr;
+	}
+	.ledger-line {
+		grid-template-columns: 1fr auto;
+	}
+	.ledger-kind {
+		grid-row: 2;
+		font-size: var(--step-small);
+	}
+	.lineup-table,
+	.lineup-table tbody,
+	.lineup-table tr,
+	.lineup-table th,
+	.lineup-table td {
+		display: block;
+		width: auto;
+		padding: 0;
+	}
+	.lineup-table tr {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		margin-bottom: 1.25rem;
+	}
+	.lineup-table th {
+		grid-column: 1 / -1;
+		font-size: var(--step-lead);
+		line-height: 1.2;
+	}
+	.lineup-table td {
+		font-size: var(--step-small);
+	}
+	.lineup-table td:nth-child(2),
+	.lineup-table .lineup-stack {
+		width: auto;
+	}
+	.lineup-table td:nth-child(2) {
+		grid-column: 1 / -1;
+	}
+	.band figcaption {
+		grid-template-columns: 1fr;
+		row-gap: 0.25rem;
+	}
+	.band figcaption span:last-child {
+		text-align: left;
+	}
+	.about-text {
+		columns: 1;
+		text-align: left;
+		line-height: 1.25;
+	}
+	.places-main,
+	.places-side {
+		grid-column: 1 / -1;
+		grid-row: auto;
+	}
+	.footer-top {
+		flex-direction: column;
+	}
+	.footer-invite {
+		font-size: 11vw;
+	}
+	.footer-links {
+		display: flex;
+		gap: 1.25rem;
+	}
+	.footer-wordmark {
+		font-size: 34vw;
+	}
+}
+
+/* ---------- movimiento (solo con JavaScript y sin reducción de movimiento) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+	.js .lines [data-line] {
+		transform: translateY(105%);
+		animation: line-up 900ms var(--ease-expo) forwards;
+		animation-delay: calc(var(--i) * 110ms + 150ms);
+	}
+	.js .hero-foot > * {
+		opacity: 0;
+		transform: translateY(16px);
+		animation: rise 700ms var(--ease-out) 600ms forwards;
+	}
+	.js [data-reveal] > * {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity var(--t-reveal) var(--ease-out), transform var(--t-reveal) var(--ease-out);
+	}
+	.js [data-reveal] > :nth-child(2) {
+		transition-delay: 80ms;
+	}
+	.js [data-reveal] > :nth-child(3) {
+		transition-delay: 160ms;
+	}
+	.js [data-reveal] > :nth-child(n + 4) {
+		transition-delay: 240ms;
+	}
+	.js [data-reveal].is-in > * {
+		opacity: 1;
+		transform: none;
+	}
+	/* La Serra Gelada se acerca despacio mientras cruza la pantalla */
+	@supports (animation-timeline: view()) {
+		.band-frame img {
+			animation: drift linear both;
+			animation-timeline: view();
+		}
+	}
+}
+@keyframes line-up {
+	to {
+		transform: none;
+	}
+}
+@keyframes rise {
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes drift {
+	from {
+		transform: scale(1.14);
+	}
+	to {
+		transform: scale(1);
 	}
 }

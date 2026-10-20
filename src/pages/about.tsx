@@ -1,25 +1,16 @@
 import Head from "next/head";
-import Footer from "@/components/layout/Footer";
-import Navbar from "@/components/layout/Navbar";
-import AboutSection from "@/components/about/AboutSection";
 
-export default function About() {
+// La web es ahora una sola página: esta ruta antigua lleva a su sección
+export default function Redirect() {
 	return (
 		<>
 			<Head>
-				<title>About Me - Gabriel</title>
-				<meta
-					name="description"
-					content="Learn more about my background and experience"
-				/>
+				<meta httpEquiv="refresh" content="0; url=./#about" />
+				<meta name="robots" content="noindex" />
 			</Head>
-			<div className="min-h-screen flex flex-col bg-white dark:bg-gray-900">
-				<Navbar />
-				<main className="flex-grow pt-16">
-					<AboutSection />
-				</main>
-				<Footer />
-			</div>
+			<p className="redirect">
+				This page has moved: <a href="./#about">go to it</a>.
+			</p>
 		</>
 	);
 }

@@ -1,12 +1,11 @@
-import { Education } from "@/types";
+import { Entry } from "@/types";
 
-export const education: Education[] = [
+export const education: Entry[] = [
 	{
-		id: "1",
-		institution: "IES Pere Maria Orts i Bosch",
-		degree: "Higher Vocational Degree in Web Application Development (DAW)",
-		period: "2020 - 2022",
-		description:
-			"Higher Technical Degree focused on creating and optimizing web applications. Gained expertise in technologies such as JavaScript, Angular, and NoSQL databases like MongoDB. Specialized in full-stack development, including front-end and back-end practices.",
+		id: "daw",
+		title: "Web Application Development (DAW)",
+		place: "Higher vocational degree, IES Pere Maria Orts i Bosch",
+		period: "2020 – 2022",
+		technologies: ["JavaScript", "Angular", "MongoDB"],
 	},
 ];

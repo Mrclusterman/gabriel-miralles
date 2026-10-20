@@ -1,6 +1,8 @@
 export interface Project {
 	id: string;
 	title: string;
+	kind: string;
+	year: string;
 	description: string;
 	technologies: string[];
 	imageUrl: string;
@@ -8,24 +10,11 @@ export interface Project {
 	githubUrl?: string;
 }
 
-export interface Experience {
+// Una fila de la trayectoria (puesto o formación)
+export interface Entry {
 	id: string;
-	company: string;
-	position: string;
+	title: string;
+	place: string;
 	period: string;
-	description: string[];
 	technologies: string[];
-}
-
-export interface Education {
-	id: string;
-	institution: string;
-	degree: string;
-	period: string;
-	description: string;
-}
-
-export interface Skill {
-	name: string;
-	category: "frontend" | "backend" | "tools" | "technologies";
 }

@@ -1,60 +1,33 @@
-import { Experience } from "@/types";
+import { Entry } from "@/types";
 
-export const experiences: Experience[] = [
+// Mismo contenido que el CV (public/CV_Gabriel_Miralles.pdf), donde están las descripciones completas
+export const experiences: Entry[] = [
 	{
-		id: "1",
-		company: "Private lessons",
-		position: "Programming Tutor",
-		period: "September 2024 - June 2025",
-		description: [
-			"Conduct comprehensive review classes in Java, C#, and MySQL, helping students strengthen their programming fundamentals.",
-			"Design and deliver customized learning materials to address specific student needs and knowledge gaps.",
-			"Provide one-on-one mentoring and practical exercises to ensure effective learning outcomes.",
-		],
-		technologies: [
-			"Java",
-			"C#",
-			"MySQL",
-			".NET",
-			"Object-Oriented Programming",
-			"Database Design",
-		],
+		id: "tutor",
+		title: "Programming tutor",
+		place: "Private lessons, DAM student",
+		period: "Sep 2024 – Jun 2025",
+		technologies: ["Java", "C#", "MySQL"],
 	},
 	{
-		id: "3",
-		company: "Gnuinux Software",
-		position: "Full-Stack Developer",
-		period: "January 2023 - February 2024",
-		description: [
-			"Developed web applications for an international client in the vehicle rental sector. Key responsibilities include:",
-			"Developing and optimizing features using technologies like JavaScript, MongoDB, GitHub, Git, and Docker",
-			"Problem-solving and API testing with Postman in an agile (Kanban) environment.",
-			"Collaborating closely with a team to implement new solutions and enhance web platform performance.",
-		],
-		technologies: ["JavaScript", "MongoDB", "GitHub", "Git", "Docker"],
+		id: "gnuinux",
+		title: "Full stack developer",
+		place: "Gnuinux Software, vehicle rental client",
+		period: "Jan 2023 – Feb 2024",
+		technologies: ["JavaScript", "MongoDB", "Docker", "Postman"],
 	},
 	{
-		id: "4",
-		company: "Alten Spain",
-		position: "Junior Software Consultant",
-		period: "July 2022 - October 2022",
-		description: [
-			"Performed key functions as an IT consultant, working with additional technologies",
-			"Learning and implementing Spring Boot in Java-based environments.",
-			"Participating in system integration and designing scalable solutions for clients.",
-		],
-		technologies: ["Java", "Spring Boot", "GitHub"],
+		id: "alten",
+		title: "Junior software consultant",
+		place: "Alten Spain",
+		period: "Jul 2022 – Oct 2022",
+		technologies: ["Java", "Spring Boot"],
 	},
 	{
-		id: "5",
-		company: "NTT DATA",
-		position: "Front-End Developer",
-		period: "March 2022 - June 2022",
-		description: [
-			"During my internship, I gained experience in front-end web platform development:",
-			"Improved interface performance using Angular, JavaScript, and TypeScript",
-			"Conducted testing with Postman and managed version control with GitHub in a collaborative environment.",
-		],
-		technologies: ["Angular", "Angular Material", "TypeScript", "Postman"],
+		id: "nttdata",
+		title: "Frontend developer (internship)",
+		place: "NTT DATA",
+		period: "Mar 2022 – Jun 2022",
+		technologies: ["Angular", "TypeScript", "Postman"],
 	},
 ];

@@ -4,6 +4,8 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
+				{/* Marca que hay JavaScript: los estados ocultos de las animaciones solo se aplican con él */}
+				<script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="Gabriel Miralles – Full Stack Developer" />
 				<meta
@@ -14,7 +16,7 @@ export default function Document() {
 				<meta property="og:image" content="https://mrclusterman.github.io/gabriel-miralles/images/profile.jpg" />
 				<meta name="twitter:card" content="summary" />
 			</Head>
-			<body className="bg-white dark:bg-gray-900">
+			<body>
 				<Main />
 				<NextScript />
 			</body>
