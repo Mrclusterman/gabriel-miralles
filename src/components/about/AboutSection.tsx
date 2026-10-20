@@ -16,42 +16,23 @@ export default function AboutSection() {
 					<h2 className="text-3xl font-bold mb-6">About Me</h2>
 					<div className="space-y-4 text-gray-600 dark:text-gray-400">
 						<p>
-							Hello! I&apos;m{" "}
-							<span className="text-black dark:text-gray-100">
-								Gabriel Miralles Álvarez
-							</span>
-							, a{" "}
-							<span className="text-black dark:text-gray-100">
-								Full-Stack Developer
-							</span>{" "}
-							with experience in web application development using
-							technologies such as{" "}
-							<span className="text-black dark:text-gray-100">
-								JavaScript
-							</span>
-							,{" "}
-							<span className="text-black dark:text-gray-100">
-								MongoDB
-							</span>
-							, and&nbsp;
-							<span className="text-black dark:text-gray-100">
-								Docker
-							</span>
-							.
+							I&apos;m Gabriel, a Full Stack Developer from Alicante,
+							Spain. I&apos;ve worked on web platforms with Angular,
+							Node.js and MongoDB at Gnuinux Software, Alten and NTT
+							DATA, and I like understanding a product end to end,
+							from the data model to the interface.
 						</p>
 						<p>
-							Specialized in agile work environments{" "}
-							<span className="text-black dark:text-gray-100">
-								(Kanban)
-							</span>
-							, focusing on collaboration and implementing new
-							features to enhance user experience.
+							I also enjoy explaining what I know: for a school year I
+							tutored a student of the DAM higher vocational degree in
+							Java, C# and MySQL.
 						</p>
 						<p>
-							Motivated by innovation and constantly learning new
-							technologies, I am looking for a team where I can
-							further develop my technical skills and contribute
-							to challenging projects.
+							Outside of code I&apos;m an endurance athlete. I ride,
+							run and do kickboxing, and I&apos;m working towards my
+							first Olympic-distance triathlon. That&apos;s where
+							TrainSync comes from: I wanted training plans that adapt
+							to my own data, so I&apos;m building the tool myself.
 						</p>
 					</div>
 				</div>

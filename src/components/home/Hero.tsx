@@ -13,14 +13,11 @@ export default function Hero() {
 						</span>
 					</h1>
 					<p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-						A Full-Stack Developer with a knack for crafting
-						beautiful and functional web applications. With
-						expertise in technologies like JavaScript, Angular, and
-						MongoDB, I specialize in delivering innovative solutions
-						in agile environments. Whether enhancing user
-						experiences or optimizing web platforms, I thrive on
-						tackling challenges and constantly learning new skills.
-						Let’s build something extraordinary together.
+						Full Stack Developer based in Alicante, Spain. I&apos;ve
+						built web platforms with Angular, Node.js and MongoDB at
+						Gnuinux Software, Alten and NTT DATA, and I keep building
+						with Next.js and Python (FastAPI) on my own projects.
+						Looking for a development role, hybrid or remote.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
 						<a
