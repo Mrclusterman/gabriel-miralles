@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { buttonClasses } from "@/components/ui/Button";
 
 export default function Hero() {
@@ -19,6 +20,15 @@ export default function Hero() {
 				<span className="line"><span data-line style={{ "--i": 0 } as React.CSSProperties}>Gabriel</span></span>
 				<span className="line"><span data-line style={{ "--i": 1 } as React.CSSProperties}>Miralles</span></span>
 			</h1>
+
+			<Image
+				className="hero-photo"
+				src="./images/bike.jpg"
+				alt="Gabriel Miralles riding a green road bike up a hill, with the sea behind"
+				width={840}
+				height={1050}
+				priority
+			/>
 
 			<div className="hero-foot">
 				<p>Full stack developer in Alicante, looking for a development role.</p>

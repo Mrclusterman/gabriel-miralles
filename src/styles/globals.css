@@ -157,13 +157,16 @@ a {
 .hero {
 	min-height: min(100svh, 46rem);
 	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 	grid-template-rows: auto 1fr auto;
+	column-gap: calc(var(--gutter) * 2);
 	row-gap: 3rem;
 	padding: 1.5rem var(--margin) 3rem;
 	background: var(--hero-bg);
 	color: var(--hero-name);
 }
 .hero-nav {
+	grid-column: 1 / -1;
 	color: var(--hero-text);
 	display: flex;
 	justify-content: space-between;
@@ -199,9 +202,19 @@ a {
 .hero-foot {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: flex-start;
 	gap: 1.5rem;
-	text-align: right;
+}
+/* Foto de la bici en la columna derecha de la portada: dice "desarrollador y ciclista" sin una palabra */
+.hero-photo {
+	grid-column: 2;
+	grid-row: 2 / span 2;
+	align-self: end;
+	width: 100%;
+	max-height: 72svh;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	object-position: 50% 30%;
 }
 .hero-foot p {
 	color: var(--hero-text);
@@ -224,7 +237,7 @@ a {
 
 /* ---------- proyectos: libro mayor con vista previa al lado ---------- */
 .work {
-	padding: var(--section) var(--margin);
+	padding: calc(var(--section) / 2) var(--margin); /* dos secciones seguidas suman una separación, no dos */
 	display: grid;
 	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 	column-gap: var(--gutter);
@@ -310,7 +323,7 @@ a {
 
 /* ---------- trayectoria: tabla a un solo tamaño, como el calendario de un plan ---------- */
 .lineup {
-	padding: var(--section) var(--margin);
+	padding: calc(var(--section) / 2) var(--margin); /* dos secciones seguidas suman una separación, no dos */
 	background: var(--surface);
 	font-size: var(--step-lead);
 	line-height: 1.4;
@@ -402,7 +415,7 @@ a {
 
 /* ---------- about: foto a un lado, texto grande con los datos resaltados al otro ---------- */
 .about {
-	padding: var(--section) var(--margin);
+	padding: calc(var(--section) / 2) var(--margin); /* dos secciones seguidas suman una separación, no dos */
 	display: grid;
 	grid-template-columns: repeat(12, minmax(0, 1fr));
 	column-gap: var(--gutter);
@@ -460,7 +473,7 @@ a {
 .footer {
 	display: flex;
 	flex-direction: column;
-	padding: var(--section) var(--margin) 0;
+	padding: calc(var(--section) / 2) var(--margin) 0;
 	background: var(--close-bg);
 	color: var(--close-ink);
 }
@@ -506,7 +519,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	gap: 1rem;
-	margin-top: calc(var(--section) * 0.75);
+	margin-top: 4rem;
 	padding-bottom: 2rem;
 	font-size: var(--step-small);
 	color: var(--close-muted);
@@ -542,9 +555,15 @@ a {
 		margin-top: 16vh;
 		font-size: 21vw;
 	}
-	.hero-foot {
-		align-items: flex-start;
-		text-align: left;
+	.hero {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto;
+	}
+	.hero-photo {
+		grid-column: 1;
+		grid-row: auto;
+		order: 1; /* en el teléfono, la frase y el botón antes que la foto */
+		max-height: none;
 	}
 	.work {
 		grid-template-columns: 1fr;
