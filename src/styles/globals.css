@@ -3,21 +3,21 @@
 /* ---------- tokens ---------- */
 :root {
 	--bg: #dedad3;
-	--surface: #d3cec6;
+	--surface: var(--bg);
 	--ink: #0a0a0a;
 	--muted: #5c5852;
 	--accent: #256f82;
 	--accent-ink: #ffffff;
 	--accent-deep: color-mix(in srgb, var(--accent) 70%, var(--ink)); /* acento legible a tamaño de texto */
 
-	/* Campos de color por papel: portada y cierre */
-	--hero-bg: var(--accent);
-	--hero-name: var(--bg);
-	--hero-name-2: var(--ink);
-	--hero-text: #ffffff;
-	--close-bg: var(--ink);
-	--close-ink: var(--bg);
-	--close-muted: #a8a39b;
+	/* Paleta uniforme: todas las secciones con el mismo fondo y la misma tinta; el acento solo en acciones y resaltados */
+	--hero-bg: var(--bg);
+	--hero-name: var(--ink);
+	--hero-name-2: var(--accent-deep);
+	--hero-text: var(--ink);
+	--close-bg: var(--bg);
+	--close-ink: var(--ink);
+	--close-muted: var(--muted);
 
 	/* Escala contenida: en escritorio nada pasa de 9rem (antes 14rem) */
 	--step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
@@ -35,35 +35,6 @@
 	--t-press: 140ms;
 	--t-hover: 180ms;
 	--t-reveal: 800ms;
-}
-
-/* Variante "oscura": la misma idea sobre fondo carbón, acento verde azulado más claro para que se lea */
-[data-palette="oscura"] {
-	--bg: #16191b;
-	--surface: #1e2225;
-	--ink: #ece8e1;
-	--muted: #a29d94;
-	--accent: #5aa9ba;
-	--accent-ink: #0d1012;
-	--accent-deep: #7cc0cf;
-	--hero-bg: #1f4b56;
-	--hero-name: #ece8e1;
-	--hero-name-2: #8fd0de;
-	--hero-text: #ffffff;
-	--close-bg: #0d0f10;
-	--close-ink: #ece8e1;
-	--close-muted: #8f8a82;
-}
-/* Variante "uniforme": todas las secciones con el mismo fondo y la misma tinta; el acento solo en acciones y resaltados */
-[data-palette="uniforme"] {
-	--surface: var(--bg);
-	--hero-bg: var(--bg);
-	--hero-name: var(--ink);
-	--hero-name-2: var(--accent-deep);
-	--hero-text: var(--ink);
-	--close-bg: var(--bg);
-	--close-ink: var(--ink);
-	--close-muted: var(--muted);
 }
 
 /* ---------- reset ---------- */
@@ -296,15 +267,19 @@ a {
 .ledger-preview {
 	margin-top: 1.25rem;
 }
+/* Marco de un tono más oscuro: con la paleta uniforme una captura del mismo fondo se fundía con la página */
+.ledger-preview {
+	padding: clamp(0.75rem, 1.5vw, 1.5rem);
+	background: color-mix(in srgb, var(--ink) 10%, var(--bg));
+}
 .ledger-preview img {
 	width: 100%;
 	aspect-ratio: 4 / 3;
 	object-fit: cover;
 	object-position: top;
 }
-.ledger-row.is-dim .ledger-line,
-.ledger-row.is-dim .ledger-desc {
-	color: var(--muted);
+.ledger-row.is-dim {
+	opacity: 0.3;
 }
 @media (min-width: 64em) {
 	/* En escritorio la imagen ocupa la columna derecha: la del primer proyecto por defecto, la de la fila señalada al pasar */
@@ -371,8 +346,8 @@ a {
 	transform: scale(0.96);
 }
 .chip[aria-pressed="true"] {
-	background: var(--ink);
-	color: var(--bg);
+	background: var(--accent);
+	color: var(--accent-ink);
 }
 .lineup-part {
 	margin: 4.5rem 0 1.25rem;
@@ -416,10 +391,13 @@ a {
 }
 .lineup-table tr.is-dim th,
 .lineup-table tr.is-dim td {
-	color: var(--muted);
+	opacity: 0.3;
 }
 .lineup-table tr.is-hit th {
 	color: var(--accent-deep);
+	font-weight: 600;
+	border-left: 4px solid var(--accent); /* barra de selección */
+	padding-left: 0.75rem;
 }
 
 /* ---------- about: foto a un lado, texto grande con los datos resaltados al otro ---------- */

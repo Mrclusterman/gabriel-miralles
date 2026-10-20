@@ -5,7 +5,7 @@ export default function Document() {
 		<Html lang="en">
 			<Head>
 				{/* Marca que hay JavaScript: los estados ocultos de las animaciones solo se aplican con él */}
-				<script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js');var p=new URLSearchParams(location.search).get('palette');if(p)document.documentElement.dataset.palette=p" }} />
+				<script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
 				{/* La web tiene su propia paleta: que Dark Reader no la invierta (veía el fondo masilla en marrón) */}
 				<meta name="darkreader-lock" />
 				<meta name="color-scheme" content="light" />
