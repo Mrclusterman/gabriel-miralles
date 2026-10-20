@@ -1,7 +1,7 @@
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/projects/ProjectCard";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
+import { buttonClasses } from "@/components/ui/Button";
 
 export default function FeaturedProjects() {
 	// Get only the first 3 projects for the featured section
@@ -26,10 +26,8 @@ export default function FeaturedProjects() {
 				</div>
 
 				<div className="text-center">
-					<Link href="/projects">
-						<Button variant="outline" size="lg">
-							View All Projects
-						</Button>
+					<Link href="/projects" className={buttonClasses("outline", "lg")}>
+						View All Projects
 					</Link>
 				</div>
 			</div>

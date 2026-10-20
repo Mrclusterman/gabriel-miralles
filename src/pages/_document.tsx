@@ -4,16 +4,15 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
-				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link
-					rel="preconnect"
-					href="https://fonts.gstatic.com"
-					crossOrigin="anonymous"
+				<meta property="og:type" content="website" />
+				<meta property="og:title" content="Gabriel Miralles – Full Stack Developer" />
+				<meta
+					property="og:description"
+					content="Full Stack Developer from Alicante, Spain. TypeScript, Angular, Next.js, Node.js and Python (FastAPI)."
 				/>
-				<link
-					href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-					rel="stylesheet"
-				/>
+				<meta property="og:url" content="https://mrclusterman.github.io/gabriel-miralles/" />
+				<meta property="og:image" content="https://mrclusterman.github.io/gabriel-miralles/images/profile.jpg" />
+				<meta name="twitter:card" content="summary" />
 			</Head>
 			<body className="bg-white dark:bg-gray-900">
 				<Main />

@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import Button from "@/components/ui/Button";
+import { buttonClasses } from "@/components/ui/Button";
 
 export default function Hero() {
 	return (
@@ -24,18 +23,18 @@ export default function Hero() {
 						Let’s build something extraordinary together.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-						<Link href="mailto:gabrielmirallesalvarez@gmail.com">
-							<Button variant="primary" size="lg">
-								Contact Me
-							</Button>
-						</Link>
+						<a
+							href="mailto:gabrielmirallesalvarez@gmail.com"
+							className={buttonClasses("primary", "lg")}
+						>
+							Contact Me
+						</a>
 						<a
 							href="./CV_Gabriel_Miralles.pdf"
 							download
+							className={buttonClasses("outline", "lg")}
 						>
-							<Button variant="outline" size="lg">
-								Download CV
-							</Button>
+							Download CV
 						</a>
 					</div>
 				</div>

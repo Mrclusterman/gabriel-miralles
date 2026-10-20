@@ -3,8 +3,8 @@ import { Experience } from "@/types";
 export const experiences: Experience[] = [
 	{
 		id: "1",
-		company: "Independent Teaching",
-		position: "Programming Instructor",
+		company: "Private lessons",
+		position: "Programming Tutor",
 		period: "September 2024 - June 2025",
 		description: [
 			"Conduct comprehensive review classes in Java, C#, and MySQL, helping students strengthen their programming fundamentals.",
@@ -36,7 +36,7 @@ export const experiences: Experience[] = [
 	{
 		id: "4",
 		company: "Alten Spain",
-		position: "IT Consultant",
+		position: "Junior Software Consultant",
 		period: "July 2022 - October 2022",
 		description: [
 			"Performed key functions as an IT consultant, working with additional technologies",
