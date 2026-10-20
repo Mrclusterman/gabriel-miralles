@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-label="TrainSync">
-  <rect width="640" height="320" rx="24" fill="#0b1220"/>
-  <polyline points="70,210 140,210 170,150 210,250 250,120 290,210 570,210" fill="none" stroke="#22d3ee" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="70" y="96" font-family="Inter,Arial,sans-serif" font-size="56" font-weight="700" fill="#f8fafc">TrainSync</text>
-  <text x="70" y="280" font-family="Inter,Arial,sans-serif" font-size="22" fill="#94a3b8">Endurance training planner · FastAPI · Next.js</text>
-</svg>

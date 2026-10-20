@@ -37,7 +37,6 @@ export function Places() {
 			</figure>
 			<figure className="places-side">
 				<Image src="./images/about-me.jpg" alt="Gabriel Miralles on a canal street" width={1600} height={1067} />
-				<figcaption>Me.</figcaption>
 			</figure>
 			<figure className="places-side">
 				<Image

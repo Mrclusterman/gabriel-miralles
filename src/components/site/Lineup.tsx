@@ -1,6 +1,7 @@
 import { experiences } from "@/data/experience";
 import { education } from "@/data/education";
 import { projects } from "@/data/projects";
+import { Fragment } from "react";
 import { Entry } from "@/types";
 
 // Tecnologías de toda la trayectoria y los proyectos, para el filtro
@@ -14,13 +15,20 @@ function Rows({ entries, tech }: { entries: Entry[]; tech: string | null }) {
 			{entries.map((entry) => {
 				const hit = tech !== null && entry.technologies.includes(tech);
 				const dim = tech !== null && !hit;
+				const state = dim ? "is-dim" : hit ? "is-hit" : "";
 				return (
-					<tr key={entry.id} className={dim ? "is-dim" : hit ? "is-hit" : undefined}>
-						<th scope="row">{entry.title}</th>
-						<td>{entry.place}</td>
-						<td className="lineup-stack">{entry.technologies.join(", ")}</td>
-						<td className="lineup-period">{entry.period}</td>
-					</tr>
+					<Fragment key={entry.id}>
+						<tr className={state}>
+							<th scope="row">{entry.title}</th>
+							<td>{entry.place}</td>
+							<td className="lineup-stack">{entry.technologies.join(", ")}</td>
+							<td className="lineup-period">{entry.period}</td>
+						</tr>
+						<tr className={`lineup-summary ${state}`}>
+							<td></td>
+							<td colSpan={3}>{entry.summary}</td>
+						</tr>
+					</Fragment>
 				);
 			})}
 		</tbody>

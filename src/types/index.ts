@@ -6,6 +6,7 @@ export interface Project {
 	description: string;
 	technologies: string[];
 	imageUrl: string;
+	imageAlt: string;
 	projectUrl?: string; // sin enlaces: proyecto privado
 	githubUrl?: string;
 }
@@ -16,5 +17,6 @@ export interface Entry {
 	title: string;
 	place: string;
 	period: string;
+	summary: string;
 	technologies: string[];
 }

@@ -30,7 +30,7 @@ export default function Work({ tech }: { tech: string | null }) {
 							)}
 							<p className="ledger-desc">{project.description}</p>
 							<div className="ledger-preview">
-								<Image src={project.imageUrl} alt={`${project.title}: ${project.kind}`} width={960} height={600} />
+								<Image src={project.imageUrl} alt={`${project.title}: ${project.imageAlt}`} width={960} height={600} />
 							</div>
 						</li>
 					);
