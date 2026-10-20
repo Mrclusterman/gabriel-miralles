@@ -28,7 +28,7 @@
 
 	--margin: clamp(1rem, 2.6vw, 2.5rem);
 	--gutter: clamp(1rem, 2vw, 2rem);
-	--section: clamp(5rem, 11vw, 10rem);
+	--section: clamp(4.5rem, 8vw, 7rem);
 
 	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 	--ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -155,10 +155,11 @@ a {
 
 /* ---------- portada: el nombre en dos líneas y dos tintas sobre un campo de color ---------- */
 .hero {
-	min-height: 100svh;
+	min-height: min(100svh, 46rem);
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	padding: 1.5rem var(--margin) 2.5rem;
+	row-gap: 3rem;
+	padding: 1.5rem var(--margin) 3rem;
 	background: var(--hero-bg);
 	color: var(--hero-name);
 }
@@ -187,7 +188,7 @@ a {
 }
 .hero-name {
 	align-self: start;
-	margin-top: 10vh;
+	margin-top: clamp(2rem, 8vh, 5rem);
 	font-size: var(--step-display);
 	line-height: 0.82;
 	letter-spacing: -0.04em;
@@ -282,29 +283,28 @@ a {
 	opacity: 0.3;
 }
 @media (min-width: 64em) {
-	/* En escritorio la imagen ocupa la columna derecha: la del primer proyecto por defecto, la de la fila señalada al pasar */
+	/* En escritorio cada proyecto es una fila de dos columnas: texto a la izquierda, su captura siempre visible a la derecha */
+	.work {
+		grid-template-columns: 1fr;
+	}
+	.ledger-row {
+		display: grid;
+		grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+		grid-template-rows: auto 1fr;
+		column-gap: calc(var(--gutter) * 2);
+		align-items: start;
+	}
+	.ledger-row + .ledger-row {
+		margin-top: calc(var(--section) * 0.6);
+	}
 	.ledger-preview {
-		position: absolute;
-		top: 0;
-		left: calc(100% + var(--gutter) * 2);
-		width: calc(5 / 7 * 100% - var(--gutter));
+		grid-column: 2;
+		grid-row: 1 / span 2;
 		margin: 0;
-		opacity: 0;
-		transition: opacity 150ms var(--ease-out);
-		pointer-events: none;
 	}
-	.ledger-row:first-child .ledger-preview,
-	.ledger-row:hover .ledger-preview,
-	.ledger-row:focus-within .ledger-preview {
-		opacity: 1;
-	}
-	.ledger:hover .ledger-row:not(:hover) .ledger-preview,
-	.ledger:focus-within .ledger-row:not(:focus-within) .ledger-preview {
-		opacity: 0;
-	}
-	.ledger:hover .ledger-row:not(:hover) .ledger-line,
-	.ledger:hover .ledger-row:not(:hover) .ledger-desc {
-		color: var(--muted);
+	.ledger:hover .ledger-row:not(:hover) {
+		opacity: 0.45;
+		transition: opacity var(--t-hover) var(--ease-out);
 	}
 }
 
