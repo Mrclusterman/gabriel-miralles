@@ -19,7 +19,7 @@ export default function About() {
 				</p>
 				<p>
 					Outside of code I&apos;m an endurance athlete. I ride, run and do kickboxing, and I&apos;m working towards my
-					first <mark className="hl-2">Olympic-distance triathlon</mark>. That&apos;s where TrainSync comes from: I
+					first <mark className="hl-2">Olympic-distance triathlon</mark>. That&apos;s where Brivel comes from: I
 					wanted training plans that adapt to my own data, so I&apos;m building the tool myself.
 				</p>
 				<p>

@@ -1,9 +1,11 @@
 import type { Project } from "@/types";
 
 const USER = "Mrclusterman";
+// Organizaciones con proyectos suyos (Brivel vive en brivelapp)
+const ORGS = ["brivelapp"];
 
 // Lo que GitHub devuelve de cada repo y lo que el repo declara en .github/portfolio.json
-type Repo = { name: string; html_url: string; homepage: string | null; created_at: string; pushed_at: string };
+type Repo = { name: string; full_name: string; html_url: string; homepage: string | null; created_at: string; pushed_at: string };
 type Manifest = {
 	title?: string;
 	kind: string;
@@ -42,21 +44,26 @@ export function toProject(repo: Repo, manifest: Manifest, imageUrl: string): Pro
 export async function githubProjects(): Promise<Project[]> {
 	const token = process.env.GITHUB_TOKEN;
 	const auth: Record<string, string> = token ? { Authorization: `Bearer ${token}` } : {};
-	const res = await fetch(`https://api.github.com/users/${USER}/repos?type=owner&sort=pushed&per_page=100`, { headers: auth });
-	if (!res.ok) throw new Error(`GitHub API: ${res.status} ${res.statusText}`);
-	const repos: (Repo & { fork: boolean; archived: boolean; default_branch: string })[] = await res.json();
+	const lists = await Promise.all(
+		[`users/${USER}/repos?type=owner`, ...ORGS.map((org) => `orgs/${org}/repos?type=public`)].map(async (path) => {
+			const res = await fetch(`https://api.github.com/${path}&sort=pushed&per_page=100`, { headers: auth });
+			if (!res.ok) throw new Error(`GitHub API: ${res.status} ${res.statusText}`);
+			return (await res.json()) as (Repo & { fork: boolean; archived: boolean; default_branch: string; private: boolean })[];
+		})
+	);
+	const repos = lists.flat().sort((a, b) => b.pushed_at.localeCompare(a.pushed_at));
 
 	const found = await Promise.all(
 		repos
-			.filter((repo) => !repo.fork && !repo.archived)
+			.filter((repo) => !repo.fork && !repo.archived && !repo.private)
 			.map(async (repo) => {
 				// La API y no raw.githubusercontent.com: su caché de minutos no vería un manifiesto recién subido
-				const manifest = await fetch(`https://api.github.com/repos/${USER}/${repo.name}/contents/.github/portfolio.json`, {
+				const manifest = await fetch(`https://api.github.com/repos/${repo.full_name}/contents/.github/portfolio.json`, {
 					headers: { ...auth, Accept: "application/vnd.github.raw+json" },
 				});
 				if (manifest.status === 404) return null;
 				if (!manifest.ok) throw new Error(`${repo.name}: portfolio.json ${manifest.status}`);
-				const image = `https://raw.githubusercontent.com/${USER}/${repo.name}/${repo.default_branch}/.github/portfolio.jpg`;
+				const image = `https://raw.githubusercontent.com/${repo.full_name}/${repo.default_branch}/.github/portfolio.jpg`;
 				return toProject(repo, await manifest.json(), image);
 			})
 	);
