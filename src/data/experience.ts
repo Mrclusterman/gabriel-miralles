@@ -26,7 +26,7 @@ export const experiences: Entry[] = [
 		place: "Alten Spain",
 		period: "Jul 2022 – Oct 2022",
 		summary:
-			"Learned and applied Spring Boot in Java projects and took part in system integration for clients.",
+			"Development with Java and Spring Boot on system integration projects for clients.",
 		technologies: ["Java", "Spring Boot"],
 	},
 	{
