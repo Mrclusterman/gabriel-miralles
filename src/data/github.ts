@@ -3,6 +3,8 @@ import type { Project } from "@/types";
 const USER = "Mrclusterman";
 // Organizaciones con proyectos suyos (Brivel vive en brivelapp)
 const ORGS = ["brivelapp"];
+// Siempre arriba en "Selected work", en este orden; el resto, del más reciente al más antiguo
+const PINNED = ["brivelapp/brivel"];
 
 // Lo que GitHub devuelve de cada repo y lo que el repo declara en .github/portfolio.json
 type Repo = { name: string; full_name: string; html_url: string; homepage: string | null; created_at: string; pushed_at: string };
@@ -51,7 +53,10 @@ export async function githubProjects(): Promise<Project[]> {
 			return (await res.json()) as (Repo & { fork: boolean; archived: boolean; default_branch: string; private: boolean })[];
 		})
 	);
-	const repos = lists.flat().sort((a, b) => b.pushed_at.localeCompare(a.pushed_at));
+	const rank = (name: string) => (PINNED.includes(name) ? PINNED.indexOf(name) : PINNED.length);
+	const repos = lists
+		.flat()
+		.sort((a, b) => rank(a.full_name) - rank(b.full_name) || b.pushed_at.localeCompare(a.pushed_at));
 
 	const found = await Promise.all(
 		repos
