@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { SITE_DESCRIPTION } from "../utils/constants";
 
 export default function Document() {
 	return (
@@ -8,13 +9,11 @@ export default function Document() {
 				<script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
 				{/* La web tiene su propia paleta: que Dark Reader no la invierta (veía el fondo masilla en marrón) */}
 				<meta name="darkreader-lock" />
+				<link rel="icon" type="image/svg+xml" href="/gabriel-miralles/favicon.svg" />
 				<meta name="color-scheme" content="light" />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="Gabriel Miralles – Full Stack Developer" />
-				<meta
-					property="og:description"
-					content="Full Stack Developer from Alicante, Spain. TypeScript, Angular, Next.js, Node.js and Python (FastAPI)."
-				/>
+				<meta property="og:description" content={SITE_DESCRIPTION} />
 				<meta property="og:url" content="https://mrclusterman.github.io/gabriel-miralles/" />
 				<meta property="og:image" content="https://mrclusterman.github.io/gabriel-miralles/images/profile.jpg" />
 				<meta name="twitter:card" content="summary" />
