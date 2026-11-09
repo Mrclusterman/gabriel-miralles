@@ -10,6 +10,7 @@ export default function Document() {
 				{/* La web tiene su propia paleta: que Dark Reader no la invierta (veía el fondo masilla en marrón) */}
 				<meta name="darkreader-lock" />
 				<link rel="icon" type="image/svg+xml" href="/gabriel-miralles/favicon.svg" />
+				<meta name="google-site-verification" content="-cWaWEGNn9xUKAy0DdaWEOLx79wVLfbieMcKEofk2A0" />
 				<meta name="color-scheme" content="light" />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="Gabriel Miralles – Full Stack Developer" />
